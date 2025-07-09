@@ -1,0 +1,103 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5c71272f-8f88-43c3-aa77-0ef9c4c1b567",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -360,
+        -100
+      ],
+      "id": "92cb2da0-17d5-4ef1-9a0a-698ac24b2689",
+      "name": "Webhook",
+      "webhookId": "5c71272f-8f88-43c3-aa77-0ef9c4c1b567"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "33ec52bd-73e5-40b4-ac49-5b3634d53314",
+              "name": "processed_message",
+              "value": "={{ $json.message }} - processed at {{ new Date() }}",
+              "type": "string"
+            },
+            {
+              "id": "7d64451e-6d9b-4062-ad2c-89fa216161cf",
+              "name": "user_name",
+              "value": "={{ $json.user || 'Anonymous' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -100,
+        -100
+      ],
+      "id": "1276da66-e5fc-4a13-97f5-be5e8b502963",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://httpbin.org/post",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"webhook_data\": \"{{ $json.processed_message }}\",\n  \"user\": \"{{ $json.user_name }}\",\n  \"timestamp\": \"{{ new Date().toISOString() }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        120,
+        -100
+      ],
+      "id": "89967cb4-b20b-4b65-b917-66d25f57a95f",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "be13008f-4113-4e44-b433-9c8c8265fd57",
+  "meta": {
+    "instanceId": "9487457648090204dc41b62ad3a9dc7e55debad21d2aeb630668ab26ad62e439"
+  },
+  "id": "6u6LNJxOgWQ1mFLz",
+  "tags": []
+}
