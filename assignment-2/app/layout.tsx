@@ -1,8 +1,12 @@
-import './globals.css'
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
 
-export const metadata = {
-  title: 'Blog Summarizer - Nexium Assignment 2',
-  description: 'AI-powered blog summarization with Urdu translation',
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
+  title: "Quote Generator - Assignment 2",
+  description: "PostgreSQL + Prisma integration for Nexium internship",
 }
 
 export default function RootLayout({
@@ -12,12 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <script src="https://cdn.tailwindcss.com"></script>
-      </head>
-      <body className="antialiased">{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }

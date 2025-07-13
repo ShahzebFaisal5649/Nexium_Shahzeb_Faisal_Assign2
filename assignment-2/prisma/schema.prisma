@@ -1,24 +1,54 @@
-
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://postgres:Pass1942546@db.idbnrecqzlzxagjvveym.supabase.co:5432/postgres"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  quotes    Quote[]
+  summaries BlogSummary[]
+
+  @@map("users")
+}
+
+model Quote {
+  id        String   @id @default(cuid())
+  content   String
+  author    String
+  category  String
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  @@map("quotes")
 }
 
 model BlogSummary {
-  id              String   @id @default(cuid())
-  url             String   @unique
-  title           String?
-  summary         String
-  urduTranslation String?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id          String   @id @default(cuid())
+  title       String
+  url         String
+  summary     String
+  urduSummary String?
+  keywords    String[]
+  createdAt   DateTime @default(now())
+
+  // Relations
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
 
   @@map("blog_summaries")
 }
