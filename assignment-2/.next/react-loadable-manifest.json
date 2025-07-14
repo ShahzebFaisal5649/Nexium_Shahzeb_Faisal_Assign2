@@ -1,1 +1,14 @@
-{}
+{
+  "node_modules\\.pnpm\\next@15.4.1_@babel+core@7.2_dc815c8c2e27036de1da1bd94dad87eb\\node_modules\\next\\dist\\client\\index.js -> ../pages/_app": {
+    "id": "node_modules\\.pnpm\\next@15.4.1_@babel+core@7.2_dc815c8c2e27036de1da1bd94dad87eb\\node_modules\\next\\dist\\client\\index.js -> ../pages/_app",
+    "files": [
+      "static/chunks/_pages-dir-browser_node_modules_pnpm_next_15_4_1__babel_core_7_2_dc815c8c2e27036de1da1bd94dad-9263e7.js"
+    ]
+  },
+  "node_modules\\.pnpm\\next@15.4.1_@babel+core@7.2_dc815c8c2e27036de1da1bd94dad87eb\\node_modules\\next\\dist\\client\\index.js -> ../pages/_error": {
+    "id": "node_modules\\.pnpm\\next@15.4.1_@babel+core@7.2_dc815c8c2e27036de1da1bd94dad87eb\\node_modules\\next\\dist\\client\\index.js -> ../pages/_error",
+    "files": [
+      "static/chunks/_pages-dir-browser_node_modules_pnpm_next_15_4_1__babel_core_7_2_dc815c8c2e27036de1da1bd94dad-f5fb72.js"
+    ]
+  }
+}
