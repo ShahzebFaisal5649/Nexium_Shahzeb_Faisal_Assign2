@@ -55,7 +55,6 @@ export async function POST(request: NextRequest) {
       content: content.trim(),
       author: author.trim(),
       category: category.trim().toLowerCase(),
-      userId,
     });
 
     return NextResponse.json(

@@ -11,8 +11,7 @@ export async function GET(request: NextRequest) {
     );
 
     return NextResponse.json({
-      summaries,
-      count: summaries.length,
+      summary: summaries,
       success: true,
     });
   } catch (error) {
