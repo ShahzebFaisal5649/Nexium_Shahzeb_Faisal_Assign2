@@ -850,7 +850,7 @@ Keywords: ${summary.keywords.join(", ")}
                             key={index}
                             className={`px-3 py-1 rounded-full text-sm font-medium ${
                               isDarkMode
-                                ? "bg-blue-500/220 text-blue-400"
+                                ? "bg-blue-500/20 text-blue-400"
                                 : "bg-blue-100 text-blue-700"
                             }`}
                             initial={{ opacity: 0, scale: 0.8 }}
